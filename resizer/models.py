@@ -33,8 +33,7 @@ class Picture(models.Model):
         resized_img = original_img.resize(size, resample=3)
         # получаем расширение картинки
         extension = self.name.split('.')[-1].upper()
-        if extension == 'JPG':
-            # особенность параметра format метода PIL.Image.save(..)
+        if extension == 'JPG' or extension is None:
             extension = 'JPEG'
         with TemporaryFile() as tf:
             resized_img.save(tf, format=extension)
