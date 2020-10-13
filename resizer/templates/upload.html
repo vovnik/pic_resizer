@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+	<p><a href="/">Назад к списку</a></p>
+	<h1>Новое изображение</h1>
+	{% for e in form.non_field_errors %}
+		<div class="alert alert-danger">{{ e }}</div>
+	{% endfor %}
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div>
+		</label for="picture_url">Ссылка</label>
+		<p><input type="text" name="picture_url">
+		{% for error in form.picture_url.errors %}
+			<div class="alert alert-danger">
+				<strong>{{ error|escape }}</strong>
+			</div>
+		{% endfor %}
+	</p>
+	<p><input type="file" name="picture">
+	{% for error in form.picture.errors %}
+		<div class="alert alert-danger">
+			<strong>{{ error|escape }}</strong>
+		</div>
+	{% endfor %}
+</p>
+<button type="submit">Отправить</button>
+</div>
+</form>
+{% endblock %}

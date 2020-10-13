@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h1>Список изображений</h1>
+	<table>
+		{% for picture in pictures %}
+			<tr>
+				<td><a href="picture/{{picture.id}}">{{picture.name}}</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+	<p>
+		<a href="upload/">Добавить изображение</a>
+	</p>
+{% endblock %}
